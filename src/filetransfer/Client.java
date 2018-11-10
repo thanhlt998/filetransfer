@@ -42,7 +42,7 @@ public class Client {
 			int code = reader.read();
 			if(code != 0) {
 				// write to file stream
-				BufferedOutputStream outputFile = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+				BufferedOutputStream outputFile = new BufferedOutputStream(new FileOutputStream(new File("client-" + fileName)));
 				
 				byte[] buffer = new byte[1024];
 				
@@ -53,10 +53,9 @@ public class Client {
 					
 					outputFile.write(buffer, 0, bytesRead);
 					outputFile.flush();
-					
-					System.out.println();
-					System.out.println("File: " + fileName + " successfully downloaded!");
 				}
+				System.out.println();
+				System.out.println("File: " + fileName + " successfully downloaded!");
 			}
 			else {
 				System.out.println("File is not present on the server!");
