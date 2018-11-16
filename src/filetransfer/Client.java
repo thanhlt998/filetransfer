@@ -32,6 +32,7 @@ public class Client {
 			System.out.println("Enter the filename: ");
 			fileName = reader.readLine();
 			
+			
 			Socket socket = new Socket(ipAddress, 9090);
 			BufferedInputStream inputStream = new BufferedInputStream(socket.getInputStream());
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -42,6 +43,7 @@ public class Client {
 			int code = reader.read();
 			if(code != 0) {
 				// write to file stream
+				long beginTime = System.currentTimeMillis();
 				BufferedOutputStream outputFile = new BufferedOutputStream(new FileOutputStream(new File("client-" + fileName)));
 				
 				byte[] buffer = new byte[1024];
@@ -49,13 +51,15 @@ public class Client {
 				int bytesRead = 0;
 				
 				while((bytesRead = inputStream.read(buffer)) != -1) {
-					System.out.println(".");
+					System.out.print(".");
 					
 					outputFile.write(buffer, 0, bytesRead);
 					outputFile.flush();
 				}
 				System.out.println();
 				System.out.println("File: " + fileName + " successfully downloaded!");
+				long endTime = System.currentTimeMillis();
+				System.out.println("Time to download: " + (endTime - beginTime));
 			}
 			else {
 				System.out.println("File is not present on the server!");
