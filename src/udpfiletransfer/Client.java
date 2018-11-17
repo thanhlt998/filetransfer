@@ -26,7 +26,7 @@ public class Client {
 			
 			InetAddress serverAddress = null;
 			
-			clientSocket.setSoTimeout(3000);
+			clientSocket.setSoTimeout(10000);
 			
 			//Input ip and fileName
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -56,6 +56,7 @@ public class Client {
 			ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(receivePacket.getData());
 			ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
 			FileInfo fileInfo = (FileInfo) objectInputStream.readObject();
+//			objectInputStream.close();
 			
 			if(!fileInfo.isExist()) {
 				System.out.println("File not existed!");

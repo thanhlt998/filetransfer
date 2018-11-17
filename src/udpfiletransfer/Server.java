@@ -19,7 +19,7 @@ public class Server {
 			DatagramPacket sendPacket = null;
 
 			while (true) {
-				DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+				DatagramPacket receivePacket = new DatagramPacket(new byte[2048], receiveData.length);
 				serverSocket.receive(receivePacket);
 
 				String fileName = new String(receivePacket.getData());
