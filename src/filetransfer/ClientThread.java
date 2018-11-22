@@ -22,8 +22,8 @@ public class ClientThread extends Thread {
 	@Override
 	public void run() {
 		try {
+			// set input, output stream to the client
 			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
 			outputStream = new BufferedOutputStream(socket.getOutputStream());
 
 			// read the filename

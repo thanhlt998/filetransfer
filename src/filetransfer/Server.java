@@ -7,6 +7,7 @@ import java.net.Socket;
 public class Server {
 	public static void main(String[] args) {
 		try {
+			// open tcp port 9090
 			ServerSocket serverSocket = new ServerSocket(9090);
 			
 			boolean isStopped = false;
