@@ -43,7 +43,8 @@ public class Client {
 			// send the file name
 			out.println(fileName);
 			
-			int code = reader.read();
+			int code = inputStream.read();
+			System.out.println(code);
 			
 			// file is existed
 			if (code != 0) {

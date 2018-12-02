@@ -32,7 +32,7 @@ public class ClientThread extends Thread {
 					"File name: " + fileName + " has been requested by " + socket.getInetAddress().getHostAddress());
 
 			File file = new File(fileName);
-
+			
 			if (!file.exists()) {
 				byte code = (byte) 0;
 				outputStream.write(code);
